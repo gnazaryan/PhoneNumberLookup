@@ -10,7 +10,7 @@ go mod tidy
 go run .
 ```
 
-Server listens on ':8080'.
+Server listens on `:8080`.
 
 Examples:
 
@@ -30,17 +30,17 @@ go test ./...
 
 ## Choices
 
-- **Go 1.22 + 'net/http' + 'go-chi/chi/v5'.** chi gives clean routing and a tiny middleware utilities (logger, recoverer, timeout) without bringing in a full framework. Handlers stay plain 'http.HandlerFunc', which keeps 'httptest' easier.
+- **Go 1.22 + `net/http` + `go-chi/chi/v5`.** chi gives clean routing and a tiny middleware utilities (logger, recoverer, timeout) without bringing in a full framework. Handlers stay plain 'http.HandlerFunc', which keeps 'httptest' easier.
 
 ## Deploy to production
 
 The service is stateless and listens on one HTTP port, so deployment is simple.
 
-- Build a static binary with 'CGO_ENABLED=0 go build' and put it in a small distroless Docker image (~12 MB).
-- Run it anywhere stateless workloads run — Kubernetes, ECS Fargate, or Cloud Run all work. Two or more replicas behind a load balancer that handles TLS.
-- Use '/healthz' for liveness and readiness probes.
-- Configure through environment variables (only 'PORT' today).
-- Logs go to stdout so the platform's log collector picks them up. Add a Prometheus '/metrics' endpoint before going live.
+- Build a static binary with `CGO_ENABLED=0 go build` and put it in a small distroless Docker image.
+- Run it anywhere stateless workloads run: Kubernetes, ECS Fargate, or Cloud Run all work. Two or more replicas behind a load balancer that handles TLS.
+- Use `/healthz` for liveness and readiness probes.
+- Configure through environment variables (only `PORT` today).
+- Logs go to stdout so the platform's log collector picks them up. Add a Prometheus `/metrics` endpoint before going live.
 
 ## Assumptions
 
@@ -49,5 +49,5 @@ The service is stateless and listens on one HTTP port, so deployment is simple.
 
 ## Improvements
 
-- Add full list of all countries dialing codes to make the application complete ('dialingToISO' and 'isoToDialing')
-- Handle properly the countries which have different number of area code digit lentgths 'areaCodeLenByDialing'
+- Add full list of all countries dialing codes to make the application complete (`dialingToISO` and `isoToDialing`)
+- Handle properly the countries which have different number of area code digit lentgths `areaCodeLenByDialing`
