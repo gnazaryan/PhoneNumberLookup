@@ -1,4 +1,4 @@
-package phonenumberlookup
+package main
 
 import (
 	"PhoneNumberLookup/internal/handler"
